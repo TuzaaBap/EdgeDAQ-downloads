@@ -31,8 +31,8 @@ ESP32-S3, 16 MB flash, 8 MB OPI PSRAM. Channel 1 uses IO5 and Channel 2 uses IO4
 ## CSV
 
 ```csv
-timestamp,unix_time_us,time_us,channel,sample_index,raw,voltage_V
-2026-11-26T00:33:54.802164+05:30,1795633434802164,0,1,0,0,0.00000
+timestamp,channel_1_V,channel_2_V
+2026-11-26T00:33:54.802164+05:30,0.123,2.500
 ```
 
 The timestamp includes the PC's timezone. Each recording keeps its own fixed time reference. Sample timing uses the nominal ADC clock; absolute accuracy depends on the PC clock, connection latency, and ADC clock drift. Displayed voltage decimals are not an accuracy guarantee.
@@ -40,3 +40,5 @@ The timestamp includes the PC's timezone. Each recording keeps its own fixed tim
 ## Source and third-party components
 
 This repository holds release downloads and user instructions. The EdgeDAQ application and firmware source repository is private. The separate Espressif flash utility is open source; its corresponding upstream source, build instructions, and third-party notices are included with releases.
+
+Version 2.3 exports exactly these three columns, including when downloading older captures. Voltages use three decimal places. Different channel sampling rates leave blank cells where a channel has no sample. Firmware 2.3 also writes this format directly to SD. Window icons are applied explicitly to Saved Recordings and the firmware window.

@@ -17,7 +17,7 @@ The Windows app is standalone and includes the firmware flasher. Python and Ardu
 1. Connect the ESP32-S3 N16R8 logger with a USB data cable.
 2. Open EdgeDAQ. To install or update firmware, choose **Firmware → Flash Firmware**, select the logger port, and click **Flash Firmware**. Keep USB connected until completion. If needed, hold BOOT, tap RESET, release BOOT, then retry.
 3. Click **Connect**. The PC sends its current date, time, and timezone to the ESP32.
-4. Choose each channel's sampling rate, apply it, and press **Start Recording**. Channel buttons show or hide graphs and voltage readings.
+4. Press **Check SD** to initialize the card, then choose each channel's sampling rate, apply it, and press **Start Recording**. Channel buttons show or hide graphs and voltage readings.
 5. **Save to SD** preserves up to the latest three minutes. Open **Saved Recordings**, select a recording, and use **Download CSV…** to save it on the PC. **Delete Recording** permanently removes only the selected recording from the SD card after confirmation (requires firmware 2.2).
 
 One shared Memory bar shows the available history for both channels. The Windows app has a custom waveform icon and descriptive file details.
@@ -42,3 +42,7 @@ The timestamp includes the PC's timezone. Each recording keeps its own fixed tim
 This repository holds release downloads and user instructions. The EdgeDAQ application and firmware source repository is private. The separate Espressif flash utility is open source; its corresponding upstream source, build instructions, and third-party notices are included with releases.
 
 Version 2.3 exports exactly these three columns, including when downloading older captures. Voltages use three decimal places. Different channel sampling rates leave blank cells where a channel has no sample. Firmware 2.3 also writes this format directly to SD. Window icons are applied explicitly to Saved Recordings and the firmware window.
+
+### Version 2.4 stability update
+
+The ESP32 boots without accessing the SD card. Press **Check SD** after connecting. SD work runs in a dedicated task; failed initialization reports an error and waits for manual retry. Card timeouts do not trigger repeated startup attempts. Existing recordings are preserved; cards are never formatted automatically.

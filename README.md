@@ -1,5 +1,7 @@
 # EdgeDAQ downloads
 
+<img src="assets/EdgeDAQ.png" width="96" alt="EdgeDAQ waveform icon">
+
 Two-channel ESP32-S3 data recorder for Windows.
 
 ## Download
@@ -16,7 +18,9 @@ The Windows app is standalone and includes the firmware flasher. Python and Ardu
 2. Open EdgeDAQ. To install or update firmware, choose **Firmware → Flash Firmware**, select the logger port, and click **Flash Firmware**. Keep USB connected until completion. If needed, hold BOOT, tap RESET, release BOOT, then retry.
 3. Click **Connect**. The PC sends its current date, time, and timezone to the ESP32.
 4. Choose each channel's sampling rate, apply it, and press **Start Recording**. Channel buttons show or hide graphs and voltage readings.
-5. **Save to SD** preserves up to the latest three minutes. Open **Saved Recordings**, select a recording, and use **Download CSV…** to save it on the PC.
+5. **Save to SD** preserves up to the latest three minutes. Open **Saved Recordings**, select a recording, and use **Download CSV…** to save it on the PC. **Delete Recording** permanently removes only the selected recording from the SD card after confirmation (requires firmware 2.2).
+
+One shared Memory bar shows the available history for both channels. The Windows app has a custom waveform icon and descriptive file details.
 
 Firmware boots idle. Changing rates clears the current memory window. SD files remain saved when firmware is updated.
 
